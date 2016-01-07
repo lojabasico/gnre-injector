@@ -1,0 +1,27 @@
+{
+  "name": "gnre-injector",
+  "version": "1.0.0",
+  "description": "A simple app to inject data into Brazilian GNRE form.",
+  "main": "main.js",
+  "scripts": {
+    "start": "electron main.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/lojabasico/gnre-injector.git"
+  },
+  "keywords": [
+    "gnre",
+    "injector",
+    "form",
+    "automate"
+  ],
+  "author": "GitHub",
+  "license": "MIT",
+  "homepage": "https://github.com/lojabasico/gnre-injector",
+  "devDependencies": {
+    "electron-packager": "^5.2.0",
+    "electron-prebuilt": "^0.36.2",
+    "webdriverio": "^3.4.0"
+  }
+}

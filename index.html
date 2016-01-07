@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8">
+    <title>Hello World!</title>
+    <style>
+      body {
+        background-color: #fff;
+      }
+      .logo {
+        text-align:center;
+        margin-top:80px;
+      }
+
+      h1 {
+        text-align: center;
+        font-family: Arial;
+      }
+    </style>
+  </head>
+  <body>
+    <p class="logo">
+      <img src="public/images/logo.png" />
+    </p>
+
+    <h1>Injetor automático de GNRE</h1>
+
+    <form>
+      <div>
+      <label>Estado de Destino</label>
+        <select id="uf">
+        	<option>Escolha o Estado</option>
+        	<option value="AC">Acre</option>
+        	<option value="AL">Alagoas</option>
+        	<option value="AP">Amapá</option>
+        	<option value="AM">Amazonas</option>
+        	<option value="BA">Bahia</option>
+        	<option value="CE">Ceará</option>
+        	<option value="DF">Distrito Federal</option>
+        	<option value="GO">Goiás</option>
+        	<option value="MA">Maranhão</option>
+        	<option value="MT">Mato Grosso</option>
+        	<option value="MS">Mato Grosso do Sul</option>
+        	<option value="MG">Minas Gerais</option>
+        	<option value="PA">Pará</option>
+        	<option value="PB">Paraiba</option>
+        	<option value="PR">Paraná</option>
+        	<option value="PE">Pernambuco</option>
+        	<option value="PI">Piauí</option>
+        	<option value="RN">Rio Grande do Norte</option>
+        	<option value="RS">Rio Grande do Sul</option>
+        	<option value="RO">Rondônia</option>
+        	<option value="RR">Roraima</option>
+        	<option value="SC">Santa Catarina</option>
+        	<option value="SE">Sergipe</option>
+        	<option value="TO">Tocantis</option>
+        </select>
+      </div>
+
+      <div>
+        <label>CPF do Destinatário</label>
+        <input type="text" value="" class="cpf" />
+      </div>
+
+      <div>
+        <label>Nome do Destinatário</label>
+        <input type="text" value="" class="name" />
+      </div>
+
+      <button type="button" class="generate">Gerar GNRE</button>
+    </form>
+
+    <script>
+      var $ = require("./public/javascripts/vendor/jquery.js")
+      const ipcRenderer = require('electron').ipcRenderer;
+
+      $(".generate").on('click',function() {
+        ipcRenderer.send('fill_gnre', $("#uf").val(), $(".cpf").val(), $(".name").val());
+      })
+      ipcRenderer.on('notification', function(event, arg) {
+        document.write('Error');
+        alert(arg);
+      });
+    </script>
+  </body>
+</html>
