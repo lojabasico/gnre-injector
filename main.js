@@ -19,6 +19,15 @@ client.on('error', function() {
   // ipcMain.send('notification', 'O fluxo foi modificado. Contate um administrador.')
 })
 
+var sys = require('util')
+var exec = require('child_process').exec;
+
+if(process.platform == "darwin") {
+  exec("./bin/chromedriver --url-base=wd/hub --port=9515", function(error, stdout, stderr) {});
+} else {
+  exec("chromedriver.exe --url-base=wd/hub --port=9515", function(error, stdout, stderr) {});
+}
+
 app.on('ready', function() {
   var main_window = new BrowserWindow({
     width: 800,
