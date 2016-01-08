@@ -8,6 +8,8 @@ Also, the GNRE website is under current movement, so we cannot predict until whe
 
 We hope it helps our team to deal gentle with very burocratic and unnecessary law which is currently affecting negatively all eCommerces at Brazil.
 
+![MacOS Build Preview](http://s14.postimg.org/g4vd5e83l/Captura_de_Tela_2016_01_08_a_s_04_44_16.png)
+
 ## Build
 
 Currently i setup build tasks for MacOs and Windows, but Linux is also supported.
