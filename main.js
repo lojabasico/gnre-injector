@@ -39,7 +39,7 @@ app.on('ready', function() {
   })
 
   main_window.on('closed', function() {
-    automator.getSession().end();
+    // automator.getSession().end();
     main_window = null;
   });
 })

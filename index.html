@@ -3,7 +3,7 @@
   <head>
     <meta charset="UTF-8">
     <title>Hello World!</title>
-    <link rel="stylesheet" href="public/stylesheets/vendor/photon.css">
+    <link rel="stylesheet" href="public/stylesheets/vendor/semantic-ui.min.css">
 
     <style>
       body {
@@ -11,7 +11,7 @@
       }
       .logo {
         text-align:center;
-        margin-top:80px;
+        margin-top:30px !important;
       }
 
       h1 {
@@ -21,68 +21,73 @@
     </style>
   </head>
   <body>
-    <p class="logo">
-      <img src="public/images/logo.png" />
-    </p>
+    <div class="ui very padded text container">
+      <p class="logo">
+        <img src="public/images/logo.png" />
+      </p>
 
-    <h1>Injetor automático de GNRE</h1>
+      <h1>Injetor automático de GNRE</h1>
 
-    <form>
-      <div>
-      <label>Estado de Destino</label>
-        <select id="uf">
-        	<option>Escolha o Estado</option>
-        	<option value="AC">Acre</option>
-        	<option value="AL">Alagoas</option>
-        	<option value="AP">Amapá</option>
-        	<option value="AM">Amazonas</option>
-        	<option value="BA">Bahia</option>
-        	<option value="CE">Ceará</option>
-        	<option value="DF">Distrito Federal</option>
-        	<option value="GO">Goiás</option>
-        	<option value="MA">Maranhão</option>
-        	<option value="MT">Mato Grosso</option>
-        	<option value="MS">Mato Grosso do Sul</option>
-        	<option value="MG">Minas Gerais</option>
-        	<option value="PA">Pará</option>
-        	<option value="PB">Paraiba</option>
-        	<option value="PR">Paraná</option>
-        	<option value="PE">Pernambuco</option>
-        	<option value="PI">Piauí</option>
-        	<option value="RN">Rio Grande do Norte</option>
-        	<option value="RS">Rio Grande do Sul</option>
-        	<option value="RO">Rondônia</option>
-        	<option value="RR">Roraima</option>
-        	<option value="SC">Santa Catarina</option>
-        	<option value="SE">Sergipe</option>
-        	<option value="TO">Tocantis</option>
-        </select>
-      </div>
+      <form class="ui form">
+        <div class="field">
+        <label>Estado de Destino</label>
+          <select id="uf" class="ui fluid dropdown">
+          	<option>Escolha o Estado</option>
+          	<option value="AC">Acre</option>
+          	<option value="AL">Alagoas</option>
+          	<option value="AP">Amapá</option>
+          	<option value="AM">Amazonas</option>
+          	<option value="BA">Bahia</option>
+          	<option value="CE">Ceará</option>
+          	<option value="DF">Distrito Federal</option>
+          	<option value="GO">Goiás</option>
+          	<option value="MA">Maranhão</option>
+          	<option value="MT">Mato Grosso</option>
+          	<option value="MS">Mato Grosso do Sul</option>
+          	<option value="MG">Minas Gerais</option>
+          	<option value="PA">Pará</option>
+          	<option value="PB">Paraiba</option>
+          	<option value="PR">Paraná</option>
+          	<option value="PE">Pernambuco</option>
+          	<option value="PI">Piauí</option>
+          	<option value="RN">Rio Grande do Norte</option>
+          	<option value="RS">Rio Grande do Sul</option>
+          	<option value="RO">Rondônia</option>
+          	<option value="RR">Roraima</option>
+          	<option value="SC">Santa Catarina</option>
+          	<option value="SE">Sergipe</option>
+          	<option value="TO">Tocantis</option>
+          </select>
+        </div>
 
-      <div>
-        <label>CPF do Destinatário</label>
-        <input type="text" value="51663676771" class="cpf" />
-      </div>
 
-      <div>
-        <label>Nome do Destinatário</label>
-        <input type="text" value="Fulano da Silva" class="name" />
-      </div>
+        <div class="three fields">
+          <div class="field">
+            <label>CPF do Destinatário</label>
+            <input type="text" value="51663676771" class="cpf" />
+          </div>
 
-      <div>
-        <label>Nro da Nota Fiscal</label>
-        <input type="text" value="014567" class="nfe" />
-      </div>
+          <div class="field">
+            <label>Nome do Destinatário</label>
+            <input type="text" value="Fulano da Silva" class="name" />
+          </div>
 
-      <div>
-        <label>Valor do GNRE</label>
-        <input type="text" value="10,20" class="gnre" />
-      </div>
+          <div class="field">
+            <label>Nro da Nota Fiscal</label>
+            <input type="text" value="014567" class="nfe" />
+          </div>
+        </div>
 
-      <button type="button" class="generate">Gerar GNRE</button>
-      <button type="button" class="close-session">Fechar sessão</button>
-      <button type="button" class="clear-form">Limpar formulario</button>
-    </form>
+        <div class="field">
+          <label>Valor do GNRE</label>
+          <input type="text" value="10,20" class="gnre" />
+        </div>
+
+        <button type="button" class="generate ui button">Gerar GNRE</button>
+        <button type="button" class="close-session ui button">Fechar sessão</button>
+        <button type="button" class="clear-form ui button">Limpar formulario</button>
+      </form>
+    </div>
 
     <script>
       var $ = require("./public/javascripts/vendor/jquery.js")
