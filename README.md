@@ -32,6 +32,27 @@ git clone https://github.com/lojabasico/gnre-injector
 2. Run ```npm run build_macos```
 3. A folder will be generated with the Executable App.
 
+## Selenium server
+
+The chromedriver server must be up and running in order to the App work.
+The server must be executed with the following command:
+
+```
+./chromedriver --url-base=wd/hub --port=9515
+```
+
+In case of windows:
+
+```
+chromedriver.exe --url-base=wd/hub --port=9515
+```
+
+Also, there is a bat file that does exactly this job located on ```"resources/bin/chromedriver.bat"```
+Of course, in order to make the command work, the ```chromedriver.exe``` file should be accessed from Prompt.
+
+In order to do this, you can move ```chromedriver.exe``` to ```X:/Windows/System32/chromedriver.exe```
+This will make the chromedriver.exe accessible from Root Prompt.
+
 ## Contribute
 
 The project is open source and need several improvements, but i wont do it know due to time restrictions.
