@@ -19,6 +19,7 @@ Currently i setup build tasks for MacOs and Windows, but Linux is also supported
 git clone https://github.com/lojabasico/gnre-injector
 ```
 2. Run ```npm run build_windows```
+3. A folder will be generated with the Executable App.
 
 ### Building for MacOs
 
@@ -27,3 +28,8 @@ git clone https://github.com/lojabasico/gnre-injector
 git clone https://github.com/lojabasico/gnre-injector
 ```
 2. Run ```npm run build_macos```
+3. A folder will be generated with the Executable App.
+
+## Contribute
+
+The project is open source and need several improvements, but i wont do it know due to time restrictions.
