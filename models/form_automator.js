@@ -4,10 +4,8 @@ var DateHelper = require('../helpers/date.js')
 var StateData = require('./state_data.js')
 
 class FormAutomator {
-  constructor(url, name, cpf) {
+  constructor(url) {
     this.url = url
-    this.name = name;
-    this.cpf = cpf;
   }
 
   setClient(client) {
@@ -49,9 +47,9 @@ class FormAutomator {
       .setValue('#telefoneEmitente','(11)30837003')
   }
 
-  fillDetailment(session) {
+  fillDetailment(detailment, session) {
     return session
-      .selectByValue('#detalheReceita', '000005')
+      .selectByValue('#detalheReceita', detailment)
   }
 
   fillProduct(session) {
@@ -60,11 +58,11 @@ class FormAutomator {
       .selectByValue('#produto', '33') // 33 = Comércio outros não especificados
   }
 
-  fillOrigin(session) {
+  fillOrigin(nfe, session) {
     return session
       .scroll('#tipoDocOrigem')
       .selectByValue('#tipoDocOrigem', '10') // 10 = Nota Fiscal
-      .setValue('#documentoOrigem', '014561')
+      .setValue('#documentoOrigem', nfe)
   }
 
   fillPeriod(session) {
@@ -91,24 +89,29 @@ class FormAutomator {
     return session.click('#tipoValorPrincipal')
   }
 
-  fillGnreValue(session) {
+  fillGnreValue(gnre, session) {
     return session
-      .setValue('#valorPrincipal', 10.50)
+      .setValue('#valorPrincipal', gnre)
   }
 
-  fillCustomerSection(session) {
+  fillGnreValueTotal(gnre, session) {
+    return session
+      .setValue('#valorTotal', gnre)
+  }
+
+  fillCustomerSection(name, cpf, session) {
+    console.log(this.cpf)
     return session
       .click('#optNaoInscritoDest')
       .click('#tipoCPFDest')
-      .setValue('#documentoDestinatario', this.cpf)
+      .setValue('#documentoDestinatario', cpf)
       .scroll('#razaoSocialDestinatario')
-      .setValue('#razaoSocialDestinatario', this.name)
+      .setValue('#razaoSocialDestinatario', name)
       .scroll('#municipioDestinatario')
       .click('#municipioDestinatario')
-      .selectByName('#municipioDestinatario', 'AGUA LIMPA')
   }
 
-  start(state) {
+  start(state, name, cpf, nfe, gnre) {
     this.session = this.client.init().url(this.url)
     var state_info = this.getStateByName(state)
 
@@ -119,7 +122,7 @@ class FormAutomator {
     this.session = this.fillCompanyDetails(this.session)
 
     if(state_info['detailment']) {
-      this.session = this.fillDetailment(this.session)
+      this.session = this.fillDetailment(state_info['detailment'], this.session)
     }
 
     if(state_info['product']) {
@@ -127,25 +130,32 @@ class FormAutomator {
     }
 
     if(state_info['origin_document']) {
-      this.session = this.fillOrigin(this.session)
+      this.session = this.fillOrigin(nfe, this.session)
     }
 
     if(state_info['period']) {
       this.session = this.fillPeriod(this.session)
     }
 
-    this.session = this.fillConvenio(this.session)
+    if(state_info['convenium'] !== false) {
+      this.session = this.fillConvenio(this.session)
+    }
+
     this.session = this.fillExpiryDate(this.session)
 
     if(state_info['force_principal']) {
       this.session = this.fillGnreValueType(this.session)
     }
 
-    this.session = this.fillGnreValue(this.session)
-    this.session = this.fillCustomerSection(this.session)
+    if(state_info['use_valor_total'] === true) {
+      this.session = this.fillGnreValueTotal(gnre, this.session)
+    } else {
+      this.session = this.fillGnreValue(gnre, this.session)
+    }
 
-    // // Apenas alguns estados
-    // // var part4 = part3.click('#tipoValorPrincipal')
+    if(state_info['customer_data'] !== false) {
+      this.session = this.fillCustomerSection(name, cpf, this.session)
+    }
   }
 
   getStateByName(state) {

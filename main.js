@@ -21,16 +21,21 @@ client.on('error', function() {
 
 app.on('ready', function() {
   var main_window = new BrowserWindow({
-    width: 500,
-    height: 500
+    width: 800,
+    height: 600
   })
 
   main_window.loadURL(['file://', __dirname, '/index.html'].join(''))
 
-  ipcMain.on('fill_gnre', function(e, uf, cpf, name) {
-    var automator = new FormAutomator('http://www.gnre.pe.gov.br/gnre/v/guia/digitar')
+  var automator = new FormAutomator('http://www.gnre.pe.gov.br/gnre/v/guia/digitar')
+
+  ipcMain.on('close_session', function(e) {
+    automator.getSession().end();
+  })
+
+  ipcMain.on('fill_gnre', function(e, uf, cpf, name, nfe, gnre) {
     automator.setClient(client)
-    automator.start(uf, cpf, name)
+    automator.start(uf, name, cpf, nfe, gnre)
   })
 
   main_window.on('closed', function() {

@@ -7,7 +7,7 @@ class StateData {
         'receipt' : '100102',
         'detailment' : '000005',
         'product' : '33',
-        'origin_document' : false,
+        'origin_document' : true,
         'alternative_nf_field' : false,
         'period' : true
       },
@@ -17,7 +17,7 @@ class StateData {
         'product' : false,
         'origin_document' : false,
         'alternative_nf_field' : 'campoAdicional0',
-        'period' : true
+        'period' : false
       },
       'AM' : {
         'receipt' : '100102',
@@ -25,7 +25,8 @@ class StateData {
         'product' : false,
         'origin_document' : false,
         'alternative_nf_field' : false,
-        'period' : true
+        'period' : true,
+        'customer_data': false
       },
       'AP' : {
         'receipt' : '100099',
@@ -33,7 +34,7 @@ class StateData {
         'product' : false,
         'origin_document' : true,
         'alternative_nf_field' : false,
-        'period' : true
+        'period' : false
       },
       'BA' : {
         'receipt' : '100102',
@@ -41,7 +42,9 @@ class StateData {
         'product' : false,
         'origin_document' : false,
         'alternative_nf_field' : false,
-        'period' : true
+        'period' : true,
+        'convenium': false,
+        'customer_data': false
       },
       'CE' : {
         'receipt' : '100102',
@@ -49,7 +52,8 @@ class StateData {
         'product' : false,
         'origin_document' : false,
         'alternative_nf_field' : false,
-        'period' : true
+        'period' : false,
+        'customer_data': false
       },
       'DF' : {
         'receipt' : '100102',
@@ -57,7 +61,9 @@ class StateData {
         'product' : false,
         'origin_document' : true,
         'alternative_nf_field' : false,
-        'period' : true
+        'period' : true,
+        'convenium': false,
+        'customer_data': false
       },
       'GO' : {
         'receipt' : '100099',
@@ -83,13 +89,14 @@ class StateData {
         'product' : false,
         'origin_document' : true,
         'alternative_nf_field' : false,
-        'period' : true
+        'period' : false,
+        'customer_data': false
       },
       'MS' : {
         'receipt' : '100102',
         'detailment' : false,
         'product' : false,
-        'origin_document' : true,
+        'origin_document' : false,
         'alternative_nf_field' : false,
         'period' : false
       },
@@ -99,7 +106,8 @@ class StateData {
         'product' : false,
         'origin_document' : true,
         'alternative_nf_field' : false,
-        'period' : true
+        'period' : true,
+        'customer_data': false
       },
       'PA' : {
         'receipt' : '100102',
@@ -116,7 +124,8 @@ class StateData {
         'product' : false,
         'origin_document' : false,
         'alternative_nf_field' : false,
-        'period' : true
+        'period' : true,
+        'customer_data': false
       },
       'PE' : {
         'receipt' : '100102',
@@ -141,7 +150,8 @@ class StateData {
         'product' : false,
         'origin_document' : true,
         'alternative_nf_field' : false,
-        'period' : false
+        'period' : false,
+        'customer_data': false
       },
       'RN' : {
         'receipt' : '100102',
@@ -149,7 +159,8 @@ class StateData {
         'product' : false,
         'origin_document' : false,
         'alternative_nf_field' : false,
-        'period' : false
+        'period' : false,
+        'customer_data': false
       },
       'RO' : {
         'receipt' : '100102',
@@ -158,7 +169,8 @@ class StateData {
         'origin_document' : false,
         'alternative_nf_field' : false,
         'period' : true,
-        'force_principal' : true
+        'force_principal' : true,
+        'customer_data': false
       },
       'RR' : {
         'receipt' : '100102',
@@ -167,7 +179,8 @@ class StateData {
         'origin_document' : false,
         'alternative_nf_field' : false,
         'period' : true,
-        'force_principal' : true
+        'force_principal' : true,
+        'customer_data': false
       },
       'RS' : {
         'receipt' : '100102',
@@ -185,7 +198,10 @@ class StateData {
         'origin_document' : true,
         'alternative_nf_field' : false,
         'period' : false,
-        'force_principal' : false
+        'force_principal' : false,
+        'convenium': false,
+        'customer_data': false,
+        'use_valor_total': true
       },
       'SE' : {
         'receipt' : '100102',
@@ -194,7 +210,8 @@ class StateData {
         'origin_document' : true,
         'alternative_nf_field' : false,
         'period' : true,
-        'force_principal' : false
+        'force_principal' : false,
+        'convenium': false
       },
       'TO' : {
         'receipt' : '100102',

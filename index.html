@@ -3,6 +3,8 @@
   <head>
     <meta charset="UTF-8">
     <title>Hello World!</title>
+    <link rel="stylesheet" href="public/stylesheets/vendor/photon.css">
+
     <style>
       body {
         background-color: #fff;
@@ -59,23 +61,51 @@
 
       <div>
         <label>CPF do Destinatário</label>
-        <input type="text" value="" class="cpf" />
+        <input type="text" value="51663676771" class="cpf" />
       </div>
 
       <div>
         <label>Nome do Destinatário</label>
-        <input type="text" value="" class="name" />
+        <input type="text" value="Fulano da Silva" class="name" />
+      </div>
+
+      <div>
+        <label>Nro da Nota Fiscal</label>
+        <input type="text" value="014567" class="nfe" />
+      </div>
+
+      <div>
+        <label>Valor do GNRE</label>
+        <input type="text" value="10,20" class="gnre" />
       </div>
 
       <button type="button" class="generate">Gerar GNRE</button>
+      <button type="button" class="close-session">Fechar sessão</button>
+      <button type="button" class="clear-form">Limpar formulario</button>
     </form>
 
     <script>
       var $ = require("./public/javascripts/vendor/jquery.js")
       const ipcRenderer = require('electron').ipcRenderer;
 
+      $(".clear-form").on("click", function() {
+        $(".cpf").val("");
+        $(".name").val("");
+        $(".nfe").val("");
+        $(".gnre").val("");
+      })
+
+      $(".close-session").on("click", function() {
+        ipcRenderer.send('close_session');
+      })
       $(".generate").on('click',function() {
-        ipcRenderer.send('fill_gnre', $("#uf").val(), $(".cpf").val(), $(".name").val());
+        ipcRenderer.send('fill_gnre',
+          $("#uf").val(),
+          $(".cpf").val(),
+          $(".name").val(),
+          $(".nfe").val(),
+          $(".gnre").val()
+        );
       })
       ipcRenderer.on('notification', function(event, arg) {
         document.write('Error');
