@@ -32,7 +32,7 @@ class FormAutomator {
       .scroll('#tipoCNPJ')
       .click('#tipoCNPJ')
       .scroll('#documentoEmitente')
-      .setValue('#documentoEmitente', '11.714.742/0001-03')
+      .setValue('#documentoEmitente', '11714742000103')
       .scroll('#razaoSocialEmitente')
       .setValue('#razaoSocialEmitente', 'basico.com comércio eletrônico ltda')
       .scroll('#enderecoEmitente')
