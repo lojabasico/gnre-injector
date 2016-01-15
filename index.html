@@ -64,12 +64,12 @@
         <div class="three fields">
           <div class="field">
             <label>CPF do Destinatário</label>
-            <input type="text" value="51663676771" class="cpf" />
+            <input type="text" value="51663676771" placeholder="123.456.789-00" class="cpf" />
           </div>
 
           <div class="field">
             <label>Nome do Destinatário</label>
-            <input type="text" value="Fulano da Silva" class="name" />
+            <input type="text" value="Fulano da Silva" placeholder="Leticia Destri" class="name" />
           </div>
 
           <div class="field">
@@ -114,6 +114,22 @@
       })
       ipcRenderer.on('notification', function(event, arg) {
         alert(arg);
+      });
+
+      $("#uf").on('change', function(){
+        ipcRenderer.send('check_customer_data',
+          $("#uf").val()
+        );
+      });
+
+      ipcRenderer.on('customer_data_visibility', function(event, visibility){
+        if(visibility) {
+          $('.name').removeAttr('disabled');
+          $('.cpf').removeAttr('disabled');
+        } else {
+          $('.name').attr('disabled', 'disabled').val('');
+          $('.cpf').attr('disabled', 'disabled').val('');
+        }
       });
     </script>
   </body>

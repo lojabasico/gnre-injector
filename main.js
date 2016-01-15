@@ -3,6 +3,7 @@
 var app = require('app')
 var BrowserWindow = require('browser-window')
 var FormAutomator = require('./models/form_automator.js')
+var StateData = require('./models/state_data.js')
 
 const webdriverio = require('webdriverio')
 var client = webdriverio.remote({
@@ -45,6 +46,18 @@ app.on('ready', function() {
   ipcMain.on('fill_gnre', function(e, uf, cpf, name, nfe, gnre) {
     automator.setClient(client)
     automator.start(uf, name, cpf, nfe, gnre)
+  })
+
+  ipcMain.on('check_customer_data', function(e, uf) {
+    var stateData = StateData.data()[uf]
+    var customerData = true
+
+    if(stateData['customer_data'] === false) {
+      customerData = false
+    }
+
+    e.sender.send('customer_data_visibility', customerData)
+
   })
 
   main_window.on('closed', function() {
