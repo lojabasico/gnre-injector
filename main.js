@@ -6,10 +6,10 @@ var FormAutomator = require('./models/form_automator.js')
 
 const webdriverio = require('webdriverio')
 var client = webdriverio.remote({
-    host: "localhost",
+    host: "127.0.0.1",
     port: 9515,
     desiredCapabilities: {
-        browserName: 'chrome',
+        browserName: 'google-chrome',
     }
 });
 
@@ -22,11 +22,11 @@ client.on('error', function() {
 var sys = require('util')
 var exec = require('child_process').exec;
 
-if(process.platform == "darwin") {
-  exec("./bin/chromedriver --url-base=wd/hub --port=9515", function(error, stdout, stderr) {});
-} else {
-  exec("chromedriver.exe --url-base=wd/hub --port=9515", function(error, stdout, stderr) {});
-}
+// if(process.platform == "darwin") {
+//   exec("./bin/chromedriver --url-base=wd/hub --port=9515", function(error, stdout, stderr) {});
+// } else {
+//   exec("chromedriver.exe --url-base=wd/hub --port=9515", function(error, stdout, stderr) {});
+// }
 
 app.on('ready', function() {
   var main_window = new BrowserWindow({

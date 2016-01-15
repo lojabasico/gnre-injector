@@ -100,7 +100,6 @@ class FormAutomator {
   }
 
   fillCustomerSection(name, cpf, session) {
-    console.log(this.cpf)
     return session
       .click('#optNaoInscritoDest')
       .click('#tipoCPFDest')
